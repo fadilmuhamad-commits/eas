@@ -1,0 +1,2432 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "API Antrian",
+    "version": "1.0"
+  },
+  "servers": [{ "url": "https://pkl-smk4.4vmapps.com" }],
+  "paths": {
+    "/api/categoryL": {
+      "get": {
+        "tags": ["Kategori Loket"],
+        "description": "Get all loket categories",
+        "responses": {
+          "200": {
+            "description": "Success get all loket categories",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "status": { "type": "boolean" },
+                    "message": { "type": "string" },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": { "type": "integer" },
+                          "name": { "type": "string" },
+                          "kode": { "type": "string" },
+                          "color": {
+                            "type": "object",
+                            "properties": {
+                              "id": { "type": "integer" },
+                              "hexcode": { "type": "string" }
+                            }
+                          },
+                          "created_at": { "type": "string" },
+                          "updated_at": { "type": "string" }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Kategori Loket"],
+        "description": "Add new category loket",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": {
+                "name": "Khusus",
+                "kode": "KH",
+                "hexcode": "#b00b69"
+              },
+              "schema": {
+                "type": "object",
+                "required": ["name", "kode", "hexcode"],
+                "properties": {
+                  "name": { "type": "string" },
+                  "kode": { "type": "string" },
+                  "hexcode": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Success add new category loket",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": true,
+                  "message": "Sukses memasukkan data"
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": { "type": "boolean" },
+                    "message": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/categoryL/{id}": {
+      "get": {
+        "tags": ["Kategori Loket"],
+        "description": "Get loket category by id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {}
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success get loket category",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "status": { "type": "boolean" },
+                    "message": { "type": "string" },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "id": { "type": "integer" },
+                        "name": { "type": "string" },
+                        "kode": { "type": "string" },
+                        "color": {
+                          "type": "object",
+                          "properties": {
+                            "id": { "type": "integer" },
+                            "hexcode": { "type": "string" }
+                          }
+                        },
+                        "created_at": { "type": "string" },
+                        "updated_at": { "type": "string" }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["Kategori Loket"],
+        "description": "Update category loket",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {}
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": {
+                "name": "Umum",
+                "kode": "UM",
+                "hexcode": "#ffffff"
+              },
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": { "type": "string" },
+                  "kode": { "type": "string" },
+                  "hexcode": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success update category loket",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": true,
+                  "message": "Sukses melakukan update data"
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": { "type": "boolean" },
+                    "message": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Kategori Loket"],
+        "description": "Delete category loket",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {}
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success delete category loket",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": true,
+                  "message": "Sukses melakukan delete data"
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": { "type": "boolean" },
+                    "message": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/categoryT": {
+      "get": {
+        "tags": ["Kategori Tiket"],
+        "description": "Get all tiket categories",
+        "responses": {
+          "200": {
+            "description": "Success get all tiket categories",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "status": { "type": "boolean" },
+                    "message": { "type": "string" },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": { "type": "integer" },
+                          "name": { "type": "string" },
+                          "kode": { "type": "string" },
+                          "created_at": { "type": "string" },
+                          "updated_at": { "type": "string" }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Kategori Tiket"],
+        "description": "Add new category tiket",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": {
+                "name": "VIP",
+                "kode": "D"
+              },
+              "schema": {
+                "type": "object",
+                "required": ["name", "kode"],
+                "properties": {
+                  "name": { "type": "string" },
+                  "kode": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Success add new category tiket",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": true,
+                  "message": "Sukses memasukkan data"
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": { "type": "boolean" },
+                    "message": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/categoryT/{id}": {
+      "get": {
+        "tags": ["Kategori Tiket"],
+        "description": "Get tiket category by id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {}
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success get tiket category",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "status": { "type": "boolean" },
+                    "message": { "type": "string" },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "id": { "type": "integer" },
+                        "name": { "type": "string" },
+                        "kode": { "type": "string" },
+                        "created_at": { "type": "string" },
+                        "updated_at": { "type": "string" }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["Kategori Tiket"],
+        "description": "Update category tiket",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {}
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": {
+                "name": "E",
+                "kode": "E"
+              },
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": { "type": "string" },
+                  "kode": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success update category tiket",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": true,
+                  "message": "Sukses melakukan update data"
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": { "type": "boolean" },
+                    "message": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Kategori Tiket"],
+        "description": "Delete category tiket",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {}
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success delete category tiket",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": true,
+                  "message": "Sukses melakukan delete data"
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": { "type": "boolean" },
+                    "message": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/color": {
+      "get": {
+        "tags": ["Color"],
+        "description": "Get all colors",
+        "responses": {
+          "200": {
+            "description": "Success get all colors",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "status": { "type": "boolean" },
+                    "message": { "type": "string" },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": { "type": "integer" },
+                          "hexcode": { "type": "string" },
+                          "created_at": { "type": "string" },
+                          "updated_at": { "type": "string" }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Color"],
+        "description": "Add new color",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": {
+                "hexcode": "#b00b69"
+              },
+              "schema": {
+                "type": "object",
+                "required": ["hexcode"],
+                "properties": {
+                  "hexcode": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Success add new color",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": true,
+                  "message": "Sukses memasukkan data"
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": { "type": "boolean" },
+                    "message": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/color/{id}": {
+      "get": {
+        "tags": ["Color"],
+        "description": "Get color by id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {}
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success get color",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "status": { "type": "boolean" },
+                    "message": { "type": "string" },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "id": { "type": "integer" },
+                        "hexcode": { "type": "string" },
+                        "created_at": { "type": "string" },
+                        "updated_at": { "type": "string" }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["Color"],
+        "description": "Update color",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {}
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": {
+                "hexcode": "#000000"
+              },
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "hexcode": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success update color",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": true,
+                  "message": "Sukses melakukan update data"
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": { "type": "boolean" },
+                    "message": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Color"],
+        "description": "Delete color",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {}
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success delete color",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": true,
+                  "message": "Sukses melakukan delete data"
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": { "type": "boolean" },
+                    "message": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/config": {
+      "get": {
+        "tags": ["Config"],
+        "description": "Get all config",
+        "responses": {
+          "200": {
+            "description": "Success get all config",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "status": { "type": "boolean" },
+                    "message": { "type": "string" },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": { "type": "integer" },
+                          "logo1": { "type": "string" },
+                          "logo2": { "type": "string" },
+                          "loading": { "type": "string" },
+                          "nama_instansi": { "type": "string" },
+                          "running_text": { "type": "string" },
+                          "status": {
+                            "type": "object",
+                            "properties": {
+                              "id": { "type": "integer" },
+                              "status": { "type": "string" }
+                            }
+                          },
+                          "color1": {
+                            "type": "object",
+                            "properties": {
+                              "id": { "type": "integer" },
+                              "hexcode": { "type": "string" }
+                            }
+                          },"color2": {
+                            "type": "object",
+                            "properties": {
+                              "id": { "type": "integer" },
+                              "hexcode": { "type": "string" }
+                            }
+                          },"color3": {
+                            "type": "object",
+                            "properties": {
+                              "id": { "type": "integer" },
+                              "hexcode": { "type": "string" }
+                            }
+                          },
+                          "created_at": { "type": "string" },
+                          "updated_at": { "type": "string" }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/config/{id}": {
+      "put": {
+        "tags": ["Config"],
+        "description": "Update color",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {}
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": {
+                "hexcode": "#000000"
+              },
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "hexcode": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success update color",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": true,
+                  "message": "Sukses melakukan update data"
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": { "type": "boolean" },
+                    "message": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/group": {
+      "get": {
+        "tags": ["Grup"],
+        "description": "Get all groups",
+        "responses": {
+          "200": {
+            "description": "Success get all groups",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "status": { "type": "boolean" },
+                    "message": { "type": "string" },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": { "type": "integer" },
+                          "name": { "type": "string" },
+                          "created_at": { "type": "string" },
+                          "updated_at": { "type": "string" }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Grup"],
+        "description": "Add new group",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": {
+                "name": "Lantai 1"
+              },
+              "schema": {
+                "type": "object",
+                "required": ["name"],
+                "properties": {
+                  "name": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Success add new group",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": true,
+                  "message": "Sukses memasukkan data"
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": { "type": "boolean" },
+                    "message": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/group/{id}": {
+      "get": {
+        "tags": ["Grup"],
+        "description": "Get group by id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {}
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success get group",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "status": { "type": "boolean" },
+                    "message": { "type": "string" },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "id": { "type": "integer" },
+                        "name": { "type": "string" },
+                        "created_at": { "type": "string" },
+                        "updated_at": { "type": "string" }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["Grup"],
+        "description": "Update color",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {}
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": {
+                "name": "Lantai 2"
+              },
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success update color",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": true,
+                  "message": "Sukses melakukan update data"
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": { "type": "boolean" },
+                    "message": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Grup"],
+        "description": "Delete group",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {}
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success delete group",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": true,
+                  "message": "Sukses melakukan delete data"
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": { "type": "boolean" },
+                    "message": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/loket": {
+      "get": {
+        "tags": ["Loket"],
+        "description": "Get all loket",
+        "responses": {
+          "200": {
+            "description": "Success get all loket",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "status": { "type": "boolean" },
+                    "message": { "type": "string" },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": { "type": "integer" },
+                          "name": { "type": "string" },
+                          "group": {
+                            "type": "object",
+                            "properties": {
+                              "id": { "type": "integer" },
+                              "name": { "type": "string" }
+                            }
+                          },
+                          "status": {
+                            "type": "object",
+                            "properties": {
+                              "id": { "type": "integer" },
+                              "status": { "type": "string" }
+                            }
+                          },
+                          "color": {
+                            "type": "object",
+                            "properties": {
+                              "id": { "type": "integer" },
+                              "hexcode": { "type": "string" }
+                            }
+                          },
+                          "created_at": { "type": "string" },
+                          "updated_at": { "type": "string" }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Loket"],
+        "description": "Add new loket",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": {
+                "name": "Poli Gigi",
+                "kode": "GG",
+                "status_id": 2,
+                "hexcode": "#b00b69"
+              },
+              "schema": {
+                "type": "object",
+                "required": ["name", "kode", "hexcode"],
+                "properties": {
+                  "name": { "type": "string" },
+                  "kode": { "type": "string" },
+                  "status_id": { "type": "integer" },
+                  "hexcode": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Success add new loket",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": true,
+                  "message": "Sukses memasukkan data"
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": { "type": "boolean" },
+                    "message": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/loket/{id}": {
+      "get": {
+        "tags": ["Loket"],
+        "description": "Get group by id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {}
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success get group",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "status": { "type": "boolean" },
+                    "message": { "type": "string" },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "id": { "type": "integer" },
+                        "name": { "type": "string" },
+                        "group": {
+                          "type": "object",
+                          "properties": {
+                            "id": { "type": "integer" },
+                            "name": { "type": "string" }
+                          }
+                        },
+                        "status": {
+                          "type": "object",
+                          "properties": {
+                            "id": { "type": "integer" },
+                            "status": { "type": "string" }
+                          }
+                        },
+                        "color": {
+                          "type": "object",
+                          "properties": {
+                            "id": { "type": "integer" },
+                            "hexcode": { "type": "string" }
+                          }
+                        },
+                        "created_at": { "type": "string" },
+                        "updated_at": { "type": "string" }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["Loket"],
+        "description": "Update loket",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {}
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": {
+                "name": "Poli Mata",
+                "kode": "MT",
+                "status_id": 2,
+                "hexcode": "#fff"
+              },
+              "schema": {
+                "type": "object",
+                "required": ["name", "kode", "hexcode"],
+                "properties": {
+                  "name": { "type": "string" },
+                  "kode": { "type": "string" },
+                  "status_id": { "type": "integer" },
+                  "hexcode": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success update loket",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": true,
+                  "message": "Sukses melakukan update data"
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": { "type": "boolean" },
+                    "message": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Loket"],
+        "description": "Delete loket",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {}
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success delete loket",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": true,
+                  "message": "Sukses melakukan delete data"
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": { "type": "boolean" },
+                    "message": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/pengunjung": {
+      "get": {
+        "tags": ["Pengunjung"],
+        "description": "Get all pengunjungs",
+        "responses": {
+          "200": {
+            "description": "Success get all pengunjungs",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "status": { "type": "boolean" },
+                    "message": { "type": "string" },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": { "type": "integer" },
+                          "no_induk": { "type": "integer" },
+                          "name": { "type": "string" },
+                          "email": { "type": "string" },
+                          "no_telp": { "type": "string" },
+                          "alamat": { "type": "string" },
+                          "tempat_lahir": { "type": "string" },
+                          "tanggal_lahir": { "type": "string" },
+                          "created_at": { "type": "string" },
+                          "updated_at": { "type": "string" }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Pengunjung"],
+        "description": "Add new pengunjung",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": {
+                "no_induk": "213422551",
+                "name": "James Budi",
+                "email": "assassin007@gmail.com",
+                "no_telp": "+6285817995455",
+                "alamat": "Jl. Kliningan No.6, Turangga, Kec. Lengkong, Kota Bandung, Jawa Barat 40264",
+                "tempat_lahir": "Bandung",
+                "tanggal_lahir": "17-08-1945"
+              },
+              "schema": {
+                "type": "object",
+                "required": [
+                  "name",
+                  "email",
+                  "no_telp",
+                  "alamat",
+                  "tempat_lahir",
+                  "tanggal_lahir"
+                ],
+                "properties": {
+                  "no_induk": { "type": "integer" },
+                  "name": { "type": "string" },
+                  "email": { "type": "string" },
+                  "no_telp": { "type": "string" },
+                  "alamat": { "type": "string" },
+                  "tempat_lahir": { "type": "string" },
+                  "tanggal_lahir": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Success add new pengunjung",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": true,
+                  "message": "Sukses memasukkan data"
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": { "type": "boolean" },
+                    "message": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/pengunjung/{id}": {
+      "get": {
+        "tags": ["Pengunjung"],
+        "description": "Get pengunjung by id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {}
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success get pengunjung",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "status": { "type": "boolean" },
+                    "message": { "type": "string" },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "id": { "type": "integer" },
+                        "no_induk": { "type": "integer" },
+                        "name": { "type": "string" },
+                        "email": { "type": "string" },
+                        "no_telp": { "type": "string" },
+                        "alamat": { "type": "string" },
+                        "tempat_lahir": { "type": "string" },
+                        "tanggal_lahir": { "type": "string" },
+                        "created_at": { "type": "string" },
+                        "updated_at": { "type": "string" }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["Pengunjung"],
+        "description": "Update pengunjung",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {}
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": {
+                "no_induk": "212211599",
+                "name": "James Bond",
+                "email": "hitman007@gmail.com",
+                "no_telp": "+6286923595421",
+                "alamat": "Jl. Kliningan No.69, Turangga, Kec. Lengkong, Kota Bandung, Jawa Barat 40264",
+                "tempat_lahir": "Bandung",
+                "tanggal_lahir": "17-08-1945"
+              },
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "no_induk": { "type": "integer" },
+                  "name": { "type": "string" },
+                  "email": { "type": "string" },
+                  "no_telp": { "type": "string" },
+                  "alamat": { "type": "string" },
+                  "tempat_lahir": { "type": "string" },
+                  "tanggal_lahir": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success update pengunjung",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": true,
+                  "message": "Sukses melakukan update data"
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": { "type": "boolean" },
+                    "message": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Pengunjung"],
+        "description": "Delete pengunjung",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {}
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success delete pengunjung",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": true,
+                  "message": "Sukses melakukan delete data"
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": { "type": "boolean" },
+                    "message": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/role": {
+      "get": {
+        "tags": ["Role"],
+        "description": "Get all roles",
+        "responses": {
+          "200": {
+            "description": "Success get all roles",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "status": { "type": "boolean" },
+                    "message": { "type": "string" },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": { "type": "integer" },
+                          "name": { "type": "string" },
+                          "unique_code": { "type": "string" },
+                          "created_at": { "type": "string" },
+                          "updated_at": { "type": "string" }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Role"],
+        "description": "Add new role",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": {
+                "name": "Admin",
+                "unique_code": "admin"
+              },
+              "schema": {
+                "type": "object",
+                "required": ["name", "unique_code"],
+                "properties": {
+                  "name": { "type": "string" },
+                  "unique_code": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Success add new role",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": true,
+                  "message": "Sukses memasukkan data"
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": { "type": "boolean" },
+                    "message": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/role/{id}": {
+      "get": {
+        "tags": ["Role"],
+        "description": "Get role by id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {}
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success get role",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "status": { "type": "boolean" },
+                    "message": { "type": "string" },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "id": { "type": "integer" },
+                        "name": { "type": "string" },
+                        "unique_code": { "type": "string" },
+                        "created_at": { "type": "string" },
+                        "updated_at": { "type": "string" }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["Role"],
+        "description": "Update role",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {}
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": {
+                "name": "CS",
+                "unique_code": "customerservice"
+              },
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": { "type": "string" },
+                  "unique_code": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success update role",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": true,
+                  "message": "Sukses melakukan update data"
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": { "type": "boolean" },
+                    "message": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Role"],
+        "description": "Delete role",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {}
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success delete role",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": true,
+                  "message": "Sukses melakukan delete data"
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": { "type": "boolean" },
+                    "message": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/status": {
+      "get": {
+        "tags": ["Status"],
+        "description": "Get all statuses",
+        "responses": {
+          "200": {
+            "description": "Success get all statuses",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "status": { "type": "boolean" },
+                    "message": { "type": "string" },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": { "type": "integer" },
+                          "status": { "type": "string" },
+                          "created_at": { "type": "string" },
+                          "updated_at": { "type": "string" }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Status"],
+        "description": "Add new status",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": {
+                "status": "Ongoing"
+              },
+              "schema": {
+                "type": "object",
+                "required": ["status"],
+                "properties": {
+                  "status": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Success add new status",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": true,
+                  "message": "Sukses memasukkan data"
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": { "type": "boolean" },
+                    "message": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/status/{id}": {
+      "get": {
+        "tags": ["Status"],
+        "description": "Get status by id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {}
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success get status",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "status": { "type": "boolean" },
+                    "message": { "type": "string" },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "id": { "type": "integer" },
+                        "status": { "type": "string" },
+                        "created_at": { "type": "string" },
+                        "updated_at": { "type": "string" }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["Status"],
+        "description": "Update status",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {}
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": {
+                "status": "True"
+              },
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "status": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success update status",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": true,
+                  "message": "Sukses melakukan update data"
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": { "type": "boolean" },
+                    "message": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Status"],
+        "description": "Delete status",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {}
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success delete status",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": true,
+                  "message": "Sukses melakukan delete data"
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": { "type": "boolean" },
+                    "message": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/tiket": {
+      "get": {
+        "tags": ["Tiket"],
+        "description": "Get all tikets",
+        "responses": {
+          "200": {
+            "description": "Success get all tikets",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "status": { "type": "boolean" },
+                    "message": { "type": "string" },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": { "type": "integer" },
+                          "no_booking": { "type": "string" },
+                          "no_antrian": { "type": "integer" },
+                          "pengunjung": {
+                            "type": "object",
+                            "properties": {
+                              "id": { "type": "integer" },
+                              "no_induk": { "type": "integer" },
+                              "name": { "type": "string" },
+                              "email": { "type": "string" },
+                              "no_telp": { "type": "string" },
+                              "tempat_lahir": { "type": "string" },
+                              "tanggal_lahir": { "type": "string" }
+                            }
+                          },
+                          "categoryL": {
+                            "type": "object",
+                            "properties": {
+                              "id": { "type": "integer" },
+                              "name": { "type": "string" },
+                              "kode": { "type": "integer" },
+                              "color": {
+                                "type": "object",
+                                "properties": {
+                                  "id": { "type": "integer" },
+                                  "hexcode": { "type": "string" }
+                                }
+                              }
+                            }
+                          },
+                          "categoryT": {
+                            "type": "object",
+                            "properties": {
+                              "id": { "type": "integer" },
+                              "name": { "type": "string" },
+                              "kode": { "type": "string" }
+                            }
+                          },
+                          "position": { "type": "integer" },
+                          "loket": {
+                            "type": "object",
+                            "properties": {
+                              "id": { "type": "integer" },
+                              "name": { "type": "string" },
+                              "group": {
+                                "type": "object",
+                                "properties": {
+                                  "id": { "type": "integer" },
+                                  "name": { "type": "string" }
+                                }
+                              },
+                              "status": {
+                                "type": "object",
+                                "properties": {
+                                  "id": { "type": "integer" },
+                                  "status": { "type": "string" }
+                                }
+                              },
+                              "color": {
+                                "type": "object",
+                                "properties": {
+                                  "id": { "type": "integer" },
+                                  "hexcode": { "type": "string" }
+                                }
+                              }
+                            }
+                          },
+                          "status": {
+                            "type": "object",
+                            "properties": {
+                              "id": { "type": "integer" },
+                              "status": { "type": "string" }
+                            }
+                          },
+                          "durasi": { "type": "integer" },
+                          "note": { "type": "string" },
+                          "created_at": { "type": "string" },
+                          "updated_at": { "type": "string" }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Tiket"],
+        "description": "Add new category tiket",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": {
+                "no_booking": "OAL8D2",
+                "no_antrian": 7,
+                "pengunjung_id": 29,
+                "categoryL_id": 3,
+                "categoryT_id": 1,
+                "position": 12,
+                "loket_id": 3,
+                "status_id": 2,
+                "durasi": null,
+                "note": "Berbaju hitam"
+              },
+              "schema": {
+                "type": "object",
+                "required": ["categoryL_id", "status_id"],
+                "properties": {
+                  "no_booking": { "type": "string" },
+                  "no_antrian": { "type": "integer" },
+                  "pengunjung_id": { "type": "integer" },
+                  "categoryL_id": { "type": "integer" },
+                  "categoryT_id": { "type": "integer" },
+                  "position": { "type": "integer" },
+                  "loket_id": { "type": "integer" },
+                  "status_id": { "type": "integer" },
+                  "durasi": { "type": "integer" },
+                  "note": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Success add new tiket",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": true,
+                  "message": "Sukses memasukkan data"
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": { "type": "boolean" },
+                    "message": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/tiket/{id}": {
+      "get": {
+        "tags": ["Tiket"],
+        "description": "Get tiket by id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {}
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success get tiket",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "status": { "type": "boolean" },
+                    "message": { "type": "string" },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "id": { "type": "integer" },
+                        "no_booking": { "type": "string" },
+                        "no_antrian": { "type": "integer" },
+                        "pengunjung": {
+                          "type": "object",
+                          "properties": {
+                            "id": { "type": "integer" },
+                            "no_induk": { "type": "integer" },
+                            "name": { "type": "string" },
+                            "email": { "type": "string" },
+                            "no_telp": { "type": "string" },
+                            "tempat_lahir": { "type": "string" },
+                            "tanggal_lahir": { "type": "string" }
+                          }
+                        },
+                        "categoryL": {
+                          "type": "object",
+                          "properties": {
+                            "id": { "type": "integer" },
+                            "name": { "type": "string" },
+                            "kode": { "type": "integer" },
+                            "color": {
+                              "type": "object",
+                              "properties": {
+                                "id": { "type": "integer" },
+                                "hexcode": { "type": "string" }
+                              }
+                            }
+                          }
+                        },
+                        "categoryT": {
+                          "type": "object",
+                          "properties": {
+                            "id": { "type": "integer" },
+                            "name": { "type": "string" },
+                            "kode": { "type": "string" }
+                          }
+                        },
+                        "position": { "type": "integer" },
+                        "loket": {
+                          "type": "object",
+                          "properties": {
+                            "id": { "type": "integer" },
+                            "name": { "type": "string" },
+                            "group": {
+                              "type": "object",
+                              "properties": {
+                                "id": { "type": "integer" },
+                                "name": { "type": "string" }
+                              }
+                            },
+                            "status": {
+                              "type": "object",
+                              "properties": {
+                                "id": { "type": "integer" },
+                                "status": { "type": "string" }
+                              }
+                            },
+                            "color": {
+                              "type": "object",
+                              "properties": {
+                                "id": { "type": "integer" },
+                                "hexcode": { "type": "string" }
+                              }
+                            }
+                          }
+                        },
+                        "status": {
+                          "type": "object",
+                          "properties": {
+                            "id": { "type": "integer" },
+                            "status": { "type": "string" }
+                          }
+                        },
+                        "durasi": { "type": "integer" },
+                        "note": { "type": "string" },
+                        "created_at": { "type": "string" },
+                        "updated_at": { "type": "string" }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["Tiket"],
+        "description": "Update tiket",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {}
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": {
+                "no_booking": "PED69O",
+                "no_antrian": 8,
+                "pengunjung_id": 30,
+                "categoryL_id": 4,
+                "categoryT_id": 3,
+                "position": 1,
+                "loket_id": 1,
+                "status_id": 2,
+                "durasi": null,
+                "note": "Artis"
+              },
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "no_booking": { "type": "string" },
+                  "no_antrian": { "type": "integer" },
+                  "pengunjung_id": { "type": "integer" },
+                  "categoryL_id": { "type": "integer" },
+                  "categoryT_id": { "type": "integer" },
+                  "position": { "type": "integer" },
+                  "loket_id": { "type": "integer" },
+                  "status_id": { "type": "integer" },
+                  "durasi": { "type": "integer" },
+                  "note": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success update tiket",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": true,
+                  "message": "Sukses melakukan update data"
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": { "type": "boolean" },
+                    "message": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Tiket"],
+        "description": "Delete tiket",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {}
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success delete tiket",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": true,
+                  "message": "Sukses melakukan delete data"
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": { "type": "boolean" },
+                    "message": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/user": {
+      "get": {
+        "tags": ["User"],
+        "description": "Get all users",
+        "responses": {
+          "200": {
+            "description": "Success get all users",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "status": { "type": "boolean" },
+                    "message": { "type": "string" },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": { "type": "integer" },
+                          "name": { "type": "string" },
+                          "email": { "type": "string" },
+                          "password": { "type": "string" },
+                          "role": {
+                            "type": "object",
+                            "properties": {
+                              "id": { "type": "integer" },
+                              "name": { "type": "string" },
+                              "unique_code": { "type": "string" }
+                            }
+                          },
+                          "loket": {
+                            "type": "object",
+                            "properties": {
+                              "id": { "type": "integer" },
+                              "name": { "type": "string" },
+                              "group": {
+                                "type": "object",
+                                "properties": {
+                                  "id": { "type": "integer" },
+                                  "name": { "type": "string" }
+                                }
+                              },
+                              "status": {
+                                "type": "object",
+                                "properties": {
+                                  "id": { "type": "integer" },
+                                  "status": { "type": "string" }
+                                }
+                              },
+                              "color": {
+                                "type": "object",
+                                "properties": {
+                                  "id": { "type": "integer" },
+                                  "hexcode": { "type": "string" }
+                                }
+                              }
+                            }
+                          },
+                          "created_at": { "type": "string" },
+                          "updated_at": { "type": "string" }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["User"],
+        "description": "Add new user",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": {
+                "name": "Andi Lukito",
+                "email": "pemburulele29@gmail.com",
+                "password": "juallelesegarmurah2122",
+                "role_id": 1,
+                "loket_id": null
+              },
+              "schema": {
+                "type": "object",
+                "required": ["name", "email", "password"],
+                "properties": {
+                  "name": { "type": "string" },
+                  "email": { "type": "string" },
+                  "password": { "type": "string" },
+                  "role_id": { "type": "integer" },
+                  "loket_id": { "type": "integer" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Success add new user",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": true,
+                  "message": "Sukses memasukkan data"
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": { "type": "boolean" },
+                    "message": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/user/{id}": {
+      "get": {
+        "tags": ["User"],
+        "description": "Get user by id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {}
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success get user",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "status": { "type": "boolean" },
+                    "message": { "type": "string" },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "id": { "type": "integer" },
+                        "name": { "type": "string" },
+                        "email": { "type": "string" },
+                        "password": { "type": "string" },
+                        "role": {
+                          "type": "object",
+                          "properties": {
+                            "id": { "type": "integer" },
+                            "name": { "type": "string" },
+                            "unique_code": { "type": "string" }
+                          }
+                        },
+                        "loket": {
+                          "type": "object",
+                          "properties": {
+                            "id": { "type": "integer" },
+                            "name": { "type": "string" },
+                            "group": {
+                              "type": "object",
+                              "properties": {
+                                "id": { "type": "integer" },
+                                "name": { "type": "string" }
+                              }
+                            },
+                            "status": {
+                              "type": "object",
+                              "properties": {
+                                "id": { "type": "integer" },
+                                "status": { "type": "string" }
+                              }
+                            },
+                            "color": {
+                              "type": "object",
+                              "properties": {
+                                "id": { "type": "integer" },
+                                "hexcode": { "type": "string" }
+                              }
+                            }
+                          }
+                        },
+                        "created_at": { "type": "string" },
+                        "updated_at": { "type": "string" }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["User"],
+        "description": "Update user",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {}
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": {
+                "name": "Windah Barusadar",
+                "email": "brandofranco@gmail.com",
+                "password": "gegegeming1120",
+                "role_id": 4,
+                "loket_id": 1
+              },
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": { "type": "string" },
+                  "email": { "type": "string" },
+                  "password": { "type": "string" },
+                  "role_id": { "type": "integer" },
+                  "loket_id": { "type": "integer" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success update user",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": true,
+                  "message": "Sukses melakukan update data"
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": { "type": "boolean" },
+                    "message": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["User"],
+        "description": "Delete user",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {}
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success delete user",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": true,
+                  "message": "Sukses melakukan delete data"
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": { "type": "boolean" },
+                    "message": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
