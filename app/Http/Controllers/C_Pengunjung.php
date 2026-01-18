@@ -37,10 +37,10 @@ class C_Pengunjung extends Controller
       ->leftJoin('ticket_categories', 'tickets.ticket_category_id', '=', 'ticket_categories.id')
       ->leftJoin('relation_counter_categories', 'relation_counter_categories.counter_category_id', '=', 'counter_categories.id')
       ->leftJoin('counters', 'relation_counter_categories.counter_id', '=', 'counters.id')
-      ->leftJoin('groups', 'counters.group_id', '=', 'groups.id')
+      ->leftJoin('groups as grp', 'counters.group_id', '=', 'grp.id')
       ->select('tickets.*', 'customers.name as name', 'customers.email as email', 'customers.address as address', 'customers.phone_number as phone_number', 'customers.birth_place as birth_place', 'customers.birth_date as birth_date')
       ->selectRaw('GROUP_CONCAT(counters.name ORDER BY counters.id SEPARATOR ", ") as counters')
-      ->selectRaw('GROUP_CONCAT(DISTINCT groups.name ORDER BY groups.id SEPARATOR ", ") as groups')
+      ->selectRaw('GROUP_CONCAT(DISTINCT grp.name ORDER BY grp.id SEPARATOR ", ") as group_names')
       ->whereNotNull('tickets.queue_number')
       ->whereNotNull('tickets.counter_category_id')
       ->where(function ($query) {
